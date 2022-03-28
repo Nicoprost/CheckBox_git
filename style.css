@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+ .container{
+     max-width: 1200px;
+     margin:20px;
+     margin-left: auto;
+     margin-right: auto;
+     background-color: navajowhite;
+ }
+
+.form-check {
+    position:relative;
+    --border:#00467f;
+    --cursor:#ca4d4d;
+    --checked:#e1c41c;
+    --cursorchecked:#1767cf;
+    font-size: 30px;
+}
+
+.form-check input {
+    position:absolute;
+    opacity: 0;
+}
+
+.form-check label {
+    display:grid;
+    grid-template-columns: 2em 1fr;
+    grid-template-areas: "checkbox label";
+    gap:.7em;
+}
+
+.form-check label::before,
+.form-check label::after
+{
+    content:"";
+    grid-area: checkbox;
+    display: block;
+}
+.form-check label::before
+{
+    width: 100%;
+    height: 1em;
+    padding-right: .1em;
+    border-radius: 1em;
+    border: solid 1px var(--border);
+    transition: background-color .3s, border-color .3s;
+}
+.form-check label::after{
+    width: calc(1em - 2px);
+    height: calc(1em - 2px);
+    background-color: var(--cursor);
+    border-radius: 50%;
+    margin-top: 2px;
+    margin-left:.1em;
+    transition: background-color .3s, transform .3s;
+}
+
+.form-check input:checked + label::before {
+background-color: var(--checked);
+border-color: var(--cursor);
+}
+.form-check input:checked + label::after {
+    background-color: var(--cursorchecked);
+    border-color: var(--border);
+    transform:translateX(1em);
+    box-shadow: 0px 0px 25px 5px rgb(24, 134, 236);
+    }
